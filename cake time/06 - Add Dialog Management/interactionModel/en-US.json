@@ -1,0 +1,249 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "cake time",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureBirthdayIntent",
+                    "slots": [
+                        {
+                            "name": "day",
+                            "type": "AMAZON.Ordinal",
+                            "samples": [
+                                "on {day}",
+                                "{day} {month} {year}",
+                                "{day} {month}",
+                                "{day}"
+                            ]
+                        },
+                        {
+                            "name": "month",
+                            "type": "MonthType",
+                            "samples": [
+                                "in {month} {year}",
+                                "in {month}",
+                                "{month}"
+                            ]
+                        },
+                        {
+                            "name": "year",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "samples": [
+                                "In {year}",
+                                "{year}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{year}",
+                        "{month} {year}",
+                        "{month}",
+                        "{day} {month}",
+                        "{day}",
+                        "{day} {month} {year}",
+                        "on {day} {month} {year}",
+                        "it is on {day} {month} {year}",
+                        "my birthday is on {day} {month} {year}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "MonthType",
+                    "values": [
+                        {
+                            "id": "12",
+                            "name": {
+                                "value": "december"
+                            }
+                        },
+                        {
+                            "id": "11",
+                            "name": {
+                                "value": "november"
+                            }
+                        },
+                        {
+                            "id": "10",
+                            "name": {
+                                "value": "october"
+                            }
+                        },
+                        {
+                            "id": "09",
+                            "name": {
+                                "value": "september"
+                            }
+                        },
+                        {
+                            "id": "08",
+                            "name": {
+                                "value": "august"
+                            }
+                        },
+                        {
+                            "id": "07",
+                            "name": {
+                                "value": "july"
+                            }
+                        },
+                        {
+                            "id": "06",
+                            "name": {
+                                "value": "june"
+                            }
+                        },
+                        {
+                            "id": "05",
+                            "name": {
+                                "value": "may"
+                            }
+                        },
+                        {
+                            "id": "04",
+                            "name": {
+                                "value": "april"
+                            }
+                        },
+                        {
+                            "id": "03",
+                            "name": {
+                                "value": "march"
+                            }
+                        },
+                        {
+                            "id": "02",
+                            "name": {
+                                "value": "february",
+                                "synonyms": [
+                                    "feb"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "01",
+                            "name": {
+                                "value": "january",
+                                "synonyms": [
+                                    "jan"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CaptureBirthdayIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "day",
+                            "type": "AMAZON.Ordinal",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1446741874172.910335701066"
+                            }
+                        },
+                        {
+                            "name": "month",
+                            "type": "MonthType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1446741874172.1573493822049"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1446741874172.1573493822049.1306357651221"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "year",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1446741874172.126491517619"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1446741874172.910335701066",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which date were you born?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "What is your birth date?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1446741874172.1573493822049",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which month?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1446741874172.126491517619",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which year were you born in?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1446741874172.1573493822049.1306357651221",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Sorry that's not a correct month. Which month were you born in?"
+                    }
+                ]
+            }
+        ]
+    }
+}

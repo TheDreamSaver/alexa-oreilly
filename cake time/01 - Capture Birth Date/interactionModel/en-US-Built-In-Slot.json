@@ -1,0 +1,54 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "cake time",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureBirthdayIntent",
+                    "slots": [
+                        {
+                            "name": "day",
+                            "type": "AMAZON.Ordinal"
+                        },
+                        {
+                            "name": "month",
+                            "type": "AMAZON.Month"
+                        },
+                        {
+                            "name": "year",
+                            "type": "AMAZON.FOUR_DIGIT_NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "{day} {month} {year}",
+                        "on {day} {month} {year}",
+                        "it is on {day} {month} {year}",
+                        "my birthday is on {day} {month} {year}"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
