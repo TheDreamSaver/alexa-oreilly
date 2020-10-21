@@ -166,6 +166,18 @@ const ErrorHandler = {
     }
 };
 
+const RequestInterceptor = {
+    process(handlerInput) {
+        console.log(`REQUEST ENVELOPE = ${JSON.stringify(handlerInput.requestEnvelope)}`);
+    }
+};
+
+const ResponseInterceptor = {
+    process(handlerInput) {
+        console.log(`RESPONSE BUILDER = ${JSON.stringify(handlerInput.responseBuilder.getResponse())}`);
+    }
+};
+
 function getBirthdayData(day, month, year) {
     const today = moment().startOf('day');
     const wasBorn = moment(`${month}/${day}/${year}`, "MM/DD/YYYY").startOf('day');
@@ -194,6 +206,8 @@ exports.handler = Alexa.SkillBuilders.standard()
         SessionEndedRequestHandler
     )
     .addErrorHandlers(ErrorHandler)
+    .addRequestInterceptors(RequestInterceptor)
+    .addResponseInterceptors(ResponseInterceptor)
     .withTableName('CakeTime')
     .withAutoCreateTable(true)
     .lambda();
